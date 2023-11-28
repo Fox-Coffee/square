@@ -1,0 +1,75 @@
+﻿<!--
+     Square: a program used to draw and calculate squares
+    Copyright (C) 2023  Filip Kamieniecki
+    
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see<https://www.gnu.org/licenses/> .
+-->
+<Window x:Class="WpfApp10.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp10"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="700" Background="#FF505C6B" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="20" Grid.Column="0">
+            <WrapPanel Width="310" Margin="0, 10">
+                <Label Width="120">Side</Label>
+                <TextBox Width="180" Name="bok_tekst" TextChanged="bok_tekst_TextChanged"></TextBox>
+            </WrapPanel>
+            <WrapPanel Width="310" Margin="0, 10">
+                <Label Width="120">Area</Label>
+                <TextBox Width="180" Name="pole_tekst" IsEnabled="false"></TextBox>
+            </WrapPanel>
+            <WrapPanel Width="310" Margin="0, 10">
+                <Label Width="120">Perimeter</Label>
+                <TextBox Width="180" Name="obwod_tekst" IsEnabled="false"></TextBox>
+            </WrapPanel>
+            <ComboBox Name="Color">
+                <ComboBoxItem IsSelected="True" IsEnabled="False">--Color--</ComboBoxItem>
+
+                <ComboBoxItem>Black</ComboBoxItem>
+                <ComboBoxItem>Red</ComboBoxItem>
+                <ComboBoxItem>Blue</ComboBoxItem>
+                <ComboBoxItem>Green</ComboBoxItem>
+
+                <ComboBoxItem IsEnabled="False">--</ComboBoxItem>
+
+                <ComboBoxItem>Yellow</ComboBoxItem>
+                <ComboBoxItem>Orange</ComboBoxItem>
+                <ComboBoxItem>Violet</ComboBoxItem>
+                <ComboBoxItem>Pink</ComboBoxItem> 
+                <ComboBoxItem>Brown</ComboBoxItem>
+                <ComboBoxItem>White</ComboBoxItem>
+            </ComboBox>
+            <CheckBox Content="Translucent" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Name="check"></CheckBox>
+            <GroupBox>
+                <StackPanel>
+                    <RadioButton Content="Show" Name="show" Checked="show_Checked"></RadioButton>
+                    <RadioButton Content="Hide" Checked="RadioButton_Checked"></RadioButton>
+                </StackPanel>
+            </GroupBox>
+            <Button Click="Button_Click_1">Draw</Button>
+            <Button Click="Button_Click">Clear</Button>
+        </StackPanel>
+        <Grid Grid.Column="1">
+            <Rectangle Fill="{Binding ElementName=Color, Path=Text}" Width="0" Height="0" Name="kwadrat" Stroke="black"></Rectangle>
+        </Grid>
+    </Grid>
+</Window>
